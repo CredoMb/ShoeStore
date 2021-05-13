@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="login_button_text">Login</string>
+    <string name="signup_button_text">SignUp</string>
+    <string name="store_name_text">The Shoe Store</string>
+    <string name="welcome_text">Welcome To</string>
+    <string name="visit_button_text">Visit</string>
+    <string name="logout_menu_text">Logout</string>
+    <string name="hint_shoe_name">Name</string>
+    <string name="hint_company_name">Company</string>
+    <string name="hint_shoe_description">Description</string>
+    <string name="hint_shoe_size">Size</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="next_text">Next Is</string>
+    <string name="listing_text">The Listing</string>
+    <string name="instruction_button_text"> Listing</string>
+
+    <!-- Title text for the empty view, which describes the empty icon image [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">It\'s a bit lonely here&#8230;</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add a pet [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Get started by adding an item</string>
+    <string name="save_button_text">Save</string>
+
+</resources>

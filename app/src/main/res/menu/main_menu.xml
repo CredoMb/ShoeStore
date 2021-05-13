@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--android:icon="?android:attr/actionModeShareDrawable" -->
+    <item
+        android:id="@+id/logoutMenuButton"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="@string/logout_menu_text"
+        android:visible="true" />
+</menu>
+
+

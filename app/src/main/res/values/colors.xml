@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="black_text_color">#de000000</color>
+    <color name="grey_text_color">#99000000</color>
+
+    <!--This will be used to highlight a selected
+    item in the CatalogActivity-->
+    <color name="light_gray">#d3d3d3</color>
+</resources>

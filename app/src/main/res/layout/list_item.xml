@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?><!-- One shoe -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="shoe"
+            type = "com.udacity.shoestore.models.Shoe"/>
+    </data>
+
+<LinearLayout
+    android:id="@+id/list_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/select_list_background"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal"
+    android:paddingStart="8dp"
+    android:paddingLeft="8dp"
+    android:paddingEnd="8dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="16dp">
+
+    <!-- android:src="@drawable/placeholder_image" -->
+    <!-- -->
+    <ImageView
+        android:id="@+id/catalog_product_iv"
+        android:layout_width="@dimen/product_image_dimension"
+        android:layout_height="@dimen/product_image_dimension"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@+id/text_container"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/product_image_dimension"
+        android:paddingLeft="16dp">
+
+        <!-- android:textColor="@color/primaryText" -->
+        <TextView
+            android:id="@+id/name_text"
+            tools:text="Shoes"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="@{shoe.name}"
+            android:gravity="bottom"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/size_text"
+            tools:text="200$"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_below="@id/name_text"
+            android:text="@{Integer.valueOf(shoe.size).toString()}"
+            android:layout_marginRight="16dp"
+            android:gravity="top"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/company_text"
+            tools:text="Addidas"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_below="@+id/name_text"
+            android:layout_toEndOf="@id/size_text"
+            android:layout_toRightOf="@id/size_text"
+            android:text="@{shoe.company}"
+            android:gravity="top"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="View" />
+    </RelativeLayout>
+</LinearLayout>
+</layout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        To be used in the
+        details_fragment Layout
+    -->
+
+    <!-- Margin to use on top of the fields group view-->
+    <dimen name="form_top_margin">16dp</dimen>
+
+    <!-- Side Padding for the container of the form's fields-->
+    <dimen name="fields_container_padding">48dp</dimen>
+
+    <!-- The margin to be used between views of the form-->
+    <dimen name="details_fragment_spacing">8dp</dimen>
+
+    <!-- Margin for the floating button -->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- The dimensions for the empty state title-->
+    <dimen name="empty_state_title_textsize">16sp</dimen>
+    <dimen name="empty_state_title_padding">8dp</dimen>
+
+    <!-- The Top padding of the empty state subtitle-->
+    <dimen name="empty_state_subtitle_padding">4dp</dimen>
+
+    <!-- Used for the dimensions of the product's ImageView -->
+    <dimen name="product_image_dimension">88dp</dimen>
+
+</resources>
