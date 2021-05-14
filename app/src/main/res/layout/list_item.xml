@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_below="@id/name_text"
-            android:text="@{Integer.valueOf(shoe.size).toString()}"
+            android:text="@{`` + shoe.size}"
             android:layout_marginRight="16dp"
             android:gravity="top"
             android:textSize="14sp" />

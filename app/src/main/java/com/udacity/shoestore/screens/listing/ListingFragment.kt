@@ -37,12 +37,15 @@ class ListingFragment : Fragment() {
         )
 
         // I need to get the intent from "details"
+        // what if...
         val listingFragmentArgs by navArgs<ListingFragmentArgs>()
 
         // initiate the view model,
         // now
         viewModel = ViewModelProvider(this).get(ListingViewModel::class.java)
 
+        // What if the
+        // thing already exist ?
         viewModel.addShoe(listingFragmentArgs.shoe)
         // I need to add the new thing in the
 
@@ -88,10 +91,17 @@ class ListingFragment : Fragment() {
         // But how ?
         binding.addNewButton.setOnClickListener {
             // Send a shoe with no data !
-          findNavController().navigate(ListingFragmentDirections.actionListingToDetails(Shoe("kama", 0.0, "", "")))
-            // Let extract
-        }
 
+            // Send its position, if inferior to 0, then
+            // its a new stuff
+
+            // even better
+         // findNavController().navigate(ListingFragmentDirections.actionListingToDetails(Shoe("kama", 0.0, "", "")))
+            // Shoe("kama", 0.0, "", "")
+            findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
+        // Let extract
+            //
+        }
 
         // Add this to "listing" destination
         //

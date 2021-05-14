@@ -39,10 +39,10 @@ class DetailsFragment : Fragment() {
         val detailsFragmentArgs by navArgs<DetailsFragmentArgs>()
         // What to do now ?
         // We
-        viewModelFactory = DetailsViewModelFactory(detailsFragmentArgs.shoe)
+        /*viewModelFactory = DetailsViewModelFactory(detailsFragmentArgs.shoe)
         viewModel = ViewModelProvider(this, viewModelFactory)
                 .get(DetailsViewModel::class.java)
-
+        */
         // If the shoe is empty name, cie, size and description
         binding.editShoeName.setText(viewModel.shoe.value?.name)
         binding.editShoeSize.setText(viewModel.shoe.value?.size.toString())
