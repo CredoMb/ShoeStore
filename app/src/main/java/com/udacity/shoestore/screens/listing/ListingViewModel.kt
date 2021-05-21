@@ -14,8 +14,8 @@ class ListingViewModel : ViewModel() {
     init {
         // We'll create an empty list
         _shoeList.value = mutableListOf<Shoe?>(Shoe("gana",45.0,"fe","good")
-            ,Shoe("gana",45.0,"fe","good")
-            ,Shoe("gana",45.0,"fe","good"))
+            ,Shoe("gano",455.0,"fe","good")
+            ,Shoe("gani",445.0,"fe","good"))
     }
 
     // var sampleList = listOf<String>("gana","kobra","milan")

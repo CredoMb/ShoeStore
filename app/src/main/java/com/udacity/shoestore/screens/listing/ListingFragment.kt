@@ -49,50 +49,33 @@ class ListingFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListingViewModel::class.java)
 
         var sampleList = listOf<String>("gana","kobra","milan")
-        // Create a list of texts
-        // Inflate the linear layout of the item
-       // itemLayout = binding.root.findViewById<LinearLayout>(R.id.list_item_layout);
 
+        // If a new shoes was created inside of the
 
-        // var mainLayoutParams: ViewGroup.LayoutParams
-        // var mainLayoutParamss = ViewGroup.LayoutParams()
-        // Inflate the linear layout
-
-
-        // Add them to the text
-        // What if the
-        // thing already exist ?
-
-        if(listingFragmentArgs.position < 0)
-        viewModel.addShoe(listingFragmentArgs.shoe)
-        else
-            Log.i("ListingActivity ","famous shoe"+listingFragmentArgs.shoe!!.name)
-            //viewModel.updateShoe(listingFragmentArgs.position,listingFragmentArgs.shoe)
-        // I need to add the new thing in the
-
+        if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null)
+            viewModel.addShoe(listingFragmentArgs.shoe)
+        else if(listingFragmentArgs.position >= 0 ) {
+            viewModel.updateShoe(listingFragmentArgs.position, listingFragmentArgs.shoe)
+        }
         // Create one big linear layout
         // and get it
-
         mainTextView = initTextview(this.context);
         posTextview = initTextview(this.context);
+
         // The shoeList observe the
         // activity and updates itself accordingly ?
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { newList ->
-            // We need to update the screen by adding a
-            // new element or all of them.
 
             var i = 0
             if(newList.size > 0) {
-                for(shoe in sampleList) {
+                for(shoe in newList) {
                     // Create a new layout shoe in newList
-                    //i in 1..5
-                    /*val shoeB = DataBindingUtil.inflate(
-                            inflater, aShoe in newList
-                            R.layout.list_item,
-                            container,
-                            false
-                    )*/
+                    //i in 1..5 sampleList
+                    // Log.i("ListingFr","Ba shooze "+shoe?.name)
+                   // Log.i("ListingFr","shooze quantity "+newList.size.toString())
+
                     //.setText("zie")
+
                     itemMainLayout = initLinearLayout(this.context)
                     // Set a click listener that
                     // makes us go to the detail Fragment
@@ -105,7 +88,7 @@ class ListingFragment : Fragment() {
                         findNavController().navigate(
                                 ListingFragmentDirections.actionListingToDetails()
                                 .setPosition(pos.toInt())
-                                .setShoe(Shoe("kama", 0.0, "", "good"))
+                                    .setShoe(newList.get(pos.toInt()))
                         )
 
                         //findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
@@ -115,7 +98,7 @@ class ListingFragment : Fragment() {
                     posTextview = initTextview(this.context)
 
                     // The thing can be empty indeed
-                    mainTextView.setText(shoe)
+                    mainTextView.setText(shoe!!.name)
                     posTextview.setText(i.toString())
 
                     // Make the position textview invisible
