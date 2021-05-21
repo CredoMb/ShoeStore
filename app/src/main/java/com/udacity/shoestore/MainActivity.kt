@@ -8,7 +8,11 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     private var isLoggedIn = false
-
+    /*open fun addView(
+    child: View!,
+    width: Int,
+    height: Int
+): Unit*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
