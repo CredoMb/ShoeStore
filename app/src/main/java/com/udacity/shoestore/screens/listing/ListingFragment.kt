@@ -2,6 +2,7 @@ package com.udacity.shoestore.screens.listing
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ListingFragmentBinding
@@ -23,6 +25,7 @@ class ListingFragment : Fragment() {
     private lateinit var mainTextView: TextView
     private lateinit var itemMainLayout: LinearLayout
     private lateinit var posTextview: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,15 +48,11 @@ class ListingFragment : Fragment() {
         // now.
         viewModel = ViewModelProvider(this).get(ListingViewModel::class.java)
 
-        // Create a list of texts
         var sampleList = listOf<String>("gana","kobra","milan")
+        // Create a list of texts
         // Inflate the linear layout of the item
        // itemLayout = binding.root.findViewById<LinearLayout>(R.id.list_item_layout);
 
-        // Add the text to the linear layout textview
-        // itemLayout.listing_groupview
-        // What to do now ?
-        //
 
         // var mainLayoutParams: ViewGroup.LayoutParams
         // var mainLayoutParamss = ViewGroup.LayoutParams()
@@ -78,42 +77,66 @@ class ListingFragment : Fragment() {
             // new element or all of them.
 
             var i = 0
-
-            for(shoe in sampleList) {
-                // Create a new layout
+            if(newList.size > 0) {
+                for(shoe in sampleList) {
+                    // Create a new layout shoe in newList
                     //i in 1..5
-                /*val shoeB = DataBindingUtil.inflate(
-                        inflater, aShoe in newList
-                        R.layout.list_item,
-                        container,
-                        false
-                )*/
-                //.setText("zie")
-                itemMainLayout = initLinearLayout(this.context)
-                mainTextView = initTextview(this.context)
-                posTextview = initTextview(this.context)
+                    /*val shoeB = DataBindingUtil.inflate(
+                            inflater, aShoe in newList
+                            R.layout.list_item,
+                            container,
+                            false
+                    )*/
+                    //.setText("zie")
+                    itemMainLayout = initLinearLayout(this.context)
+                    // Set a click listener that
+                    // makes us go to the detail Fragment
+                    itemMainLayout.setOnClickListener {
 
-                mainTextView.setText(shoe)
-                posTextview.setText(i.toString())
+                        // Get the position of the current element
+                        val pos = (it.findViewById<TextView>(R.id.position_text).text).toString()
 
-                // Make the position textview invisible
-                // and set its id.
-                posTextview.visibility = View.GONE
-                posTextview.id
+                        // Send the position to the thing
+                        findNavController().navigate(
+                                ListingFragmentDirections.actionListingToDetails()
+                                .setPosition(pos.toInt())
+                                .setShoe(Shoe("kama", 0.0, "", "good"))
+                        )
 
-                itemMainLayout.addView(mainTextView)
-                itemMainLayout.addView(posTextview)
+                        //findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
+                    }
 
-                binding.listingGroupview.addView(itemMainLayout)
+                    mainTextView = initTextview(this.context)
+                    posTextview = initTextview(this.context)
 
-                /*textView = TextView(this.context);
+                    // The thing can be empty indeed
+                    mainTextView.setText(shoe)
+                    posTextview.setText(i.toString())
+
+                    // Make the position textview invisible
+                    // and set its id.
+                    posTextview.visibility = View.GONE
+                    posTextview.id = R.id.position_text
+
+                    itemMainLayout.addView(mainTextView)
+                    itemMainLayout.addView(posTextview)
+
+                    // Add a click listener here
+
+                    binding.listingGroupview.addView(itemMainLayout)
+
+                    /*textView = TextView(this.context);
 
 
-                //listing_groupview
-                binding.listingGroupview*/
+                    //listing_groupview
+                    binding.listingGroupview*/
 
-                i++
+                    i++
+                }
+            }else {
+                Log.i("MainActivity","eza videu")
             }
+
             //
         })
 
