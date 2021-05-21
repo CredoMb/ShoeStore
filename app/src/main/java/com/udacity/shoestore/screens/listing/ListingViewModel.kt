@@ -18,12 +18,21 @@ class ListingViewModel : ViewModel() {
             ,Shoe("gana",45.0,"fe","good"))
     }
 
-    //var sampleList = listOf<String>("gana","kobra","milan")
+    // var sampleList = listOf<String>("gana","kobra","milan")
+    //
 
     fun addShoe(aShoe:Shoe? ){
 
         var inter = _shoeList.value
         inter?.add(aShoe)
+
+        _shoeList.value = inter
+    }
+
+    fun updateShoe(pos: Int,aShoe: Shoe? ){
+
+        var inter = _shoeList.value
+        inter?.set(pos,aShoe)
 
         _shoeList.value = inter
     }
