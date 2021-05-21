@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -44,17 +45,22 @@ class DetailsFragment : Fragment() {
         // require "integer"
         // found "int"
 
-        viewModelFactory = DetailsViewModelFactory(detailsFragmentArgs.shoe!!,detailsFragmentArgs.position)
+
+        viewModelFactory = DetailsViewModelFactory(detailsFragmentArgs.shoe,detailsFragmentArgs.position)
         viewModel = ViewModelProvider(this, viewModelFactory)
                 .get(DetailsViewModel::class.java)
 
         //Log.i("DetailActivity","é pozition yango "+detailsFragmentArgs.position.toString())
 
+        viewModel.shoe.observe(viewLifecycleOwner, Observer { shoeUpdate ->
+            if(shoeUpdate != null){
+                binding.editShoeName.setText(shoeUpdate.name)
+                binding.editShoeSize.setText(shoeUpdate.size.toString())
+                binding.editCompanyName.setText(shoeUpdate.company)
+                binding.editShoeDescription.setText(shoeUpdate.description)
+            }
+        })
         // If the shoe is empty name, cie, size and description
-        binding.editShoeName.setText(viewModel.shoe.value?.name)
-        binding.editShoeSize.setText(viewModel.shoe.value?.size.toString())
-        binding.editCompanyName.setText(viewModel.shoe.value?.company)
-        binding.editShoeDescription.setText(viewModel.shoe.value?.description)
 
         // Take the shoe
         binding.saveButton.setOnClickListener {

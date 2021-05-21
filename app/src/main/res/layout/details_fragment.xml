@@ -12,11 +12,10 @@
     android:paddingLeft="@dimen/fields_container_padding"
     android:paddingRight="@dimen/fields_container_padding"
     android:paddingBottom="@dimen/form_top_margin"
-    tools:context=".DetailsFragment">
+    tools:context="screens.details.DetailsFragment">
 
     <!--
     <data>
-
         <variable
             name="detailViewModel"
             type="com.example.android" />

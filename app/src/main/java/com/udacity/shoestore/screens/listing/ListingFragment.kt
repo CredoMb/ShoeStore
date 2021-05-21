@@ -134,18 +134,8 @@ class ListingFragment : Fragment() {
         // But how ?
         binding.addNewButton.setOnClickListener {
             // Send a shoe with no data !
-
-            // Send its position, if inferior to 0, then
-            // its a new stuff
-
-            // even better
-         // findNavController().navigate(ListingFragmentDirections.actionListingToDetails(Shoe("kama", 0.0, "", "")))
-            // Shoe("kama", 0.0, "", "")
-            // findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
-        // Let extract
-            // Keep going bro, just keep going !!
+            findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
         }
-
         return binding.root
 
     }
