@@ -68,9 +68,6 @@ class DetailsFragment : Fragment() {
                     !(binding.editShoeSize.text!!.isEmpty())
                ){
 
-                   var cieName = ""
-                   var descript = ""
-
                 if(!binding.editCompanyName.text.toString().isEmpty()){
                     viewModel.setCompany(binding.editCompanyName.text.toString())
                 }
@@ -90,11 +87,11 @@ class DetailsFragment : Fragment() {
                 // send it back with the position
                 // we got if it was a new thing, set the
                 // position to it default value
-                findNavController().navigate(DetailsFragmentDirections.actionDetailsDestinationToListingDestination()
+                findNavController().navigate(
+                    DetailsFragmentDirections.actionDetailsDestinationToListingDestination()
                     .setPosition(viewModel.position.value!!)
-                    .setShoe(Shoe(binding.editShoeName.text!!.toString(),
-                        binding.editShoeSize.text!!.toString().toDouble(),
-                        cieName,descript)))
+                    .setShoe(viewModel.shoe.value)
+                )
 
                 // 2) Add it to the listing fragment
                 // Size x

@@ -15,6 +15,7 @@ class DetailsViewModel(aShoe: Shoe?,pos: Int): ViewModel() {
     val position: LiveData<Int>
         get() = _position
 
+    // As soon
     init {
 
         if(aShoe == null)
