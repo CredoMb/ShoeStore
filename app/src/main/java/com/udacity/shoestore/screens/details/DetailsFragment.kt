@@ -45,7 +45,6 @@ class DetailsFragment : Fragment() {
         // require "integer"
         // found "int"
 
-
         viewModelFactory = DetailsViewModelFactory(detailsFragmentArgs.shoe,detailsFragmentArgs.position)
         viewModel = ViewModelProvider(this, viewModelFactory)
                 .get(DetailsViewModel::class.java)
@@ -73,19 +72,18 @@ class DetailsFragment : Fragment() {
                    var descript = ""
 
                 if(!binding.editCompanyName.text.toString().isEmpty()){
-                    cieName = binding.editCompanyName.text.toString()
+                    viewModel.setCompany(binding.editCompanyName.text.toString())
                 }
 
                 if(!binding.editShoeDescription.text.toString().isEmpty()){
-                    descript = binding.editShoeDescription.text.toString()
+                    viewModel.setCompany(binding.editShoeDescription.text.toString())
                 }
 
                 // Get all the fields
                 // Create a new shoes and add it to the
                 // list
-                Shoe(binding.editShoeName.text!!.toString(),
-                    binding.editShoeSize.text!!.toString().toDouble(),
-                    cieName,descript)
+                viewModel.setName(binding.editShoeName.text!!.toString())
+                viewModel.setSize(binding.editShoeSize.text!!.toString().toDouble())
 
                 // 1) Create the layout
 

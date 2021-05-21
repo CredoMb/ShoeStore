@@ -16,6 +16,9 @@ class DetailsViewModel(aShoe: Shoe?,pos: Int): ViewModel() {
         get() = _position
 
     init {
+
+        /*if(aShoe == null)
+            _shoe.value = Shoe("",0.0,"","")*/
         _shoe.value = aShoe
         _position.value = pos
     }
