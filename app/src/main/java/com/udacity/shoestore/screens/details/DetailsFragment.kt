@@ -90,7 +90,7 @@ class DetailsFragment : Fragment() {
                 findNavController().navigate(
                     DetailsFragmentDirections.actionDetailsDestinationToListingDestination()
                     .setPosition(viewModel.position.value!!)
-                    .setShoe(viewModel.shoe.value)
+                    .setShoe(viewModel.shoe?.value)
                 )
 
                 // 2) Add it to the listing fragment

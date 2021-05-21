@@ -51,12 +51,16 @@ class ListingFragment : Fragment() {
         var sampleList = listOf<String>("gana","kobra","milan")
 
         // If a new shoes was created inside of the
+        // Log.i("Listing Fr","shooz eye "+listingFragmentArgs.shoe?.size)
 
-        if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null)
+        if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null){
+            Log.i("Listing Fr","shooz eye "+listingFragmentArgs.shoe?.name)
             viewModel.addShoe(listingFragmentArgs.shoe)
+        }
         else if(listingFragmentArgs.position >= 0 ) {
             viewModel.updateShoe(listingFragmentArgs.position, listingFragmentArgs.shoe)
         }
+
         // Create one big linear layout
         // and get it
         mainTextView = initTextview(this.context);
@@ -72,7 +76,7 @@ class ListingFragment : Fragment() {
                     // Create a new layout shoe in newList
                     //i in 1..5 sampleList
                     // Log.i("ListingFr","Ba shooze "+shoe?.name)
-                   // Log.i("ListingFr","shooze quantity "+newList.size.toString())
+                    Log.i("ListingFr","shooze quantity "+newList.size.toString())
 
                     //.setText("zie")
 

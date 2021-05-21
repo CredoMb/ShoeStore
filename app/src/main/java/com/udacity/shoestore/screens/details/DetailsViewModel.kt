@@ -1,5 +1,6 @@
 package com.udacity.shoestore.screens.details
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,42 +21,37 @@ class DetailsViewModel(aShoe: Shoe?,pos: Int): ViewModel() {
 
         if(aShoe == null)
             _shoe.value = Shoe("",0.0,"","")
-        _shoe.value = aShoe
+        else
+            _shoe.value = aShoe
+
         _position.value = pos
     }
 
     //
     fun setName(shoeName:String){
 
-        var shoeInter = _shoe.value
-        shoeInter?.name = shoeName
-
-        _shoe.value  = shoeInter
+        _shoe.value  = Shoe(shoeName,_shoe.value!!.size,
+            _shoe.value!!.company,_shoe.value!!.description)
     }
 
     // var name: String, var size: Double, var company: String, var description: String,
     // val images: List<String> = mutableListOf()
     fun setSize(shoeSize:Double){
-        var shoeInter = _shoe.value
-        shoeInter?.size = shoeSize
-
-        _shoe.value  = shoeInter
+        //
+        _shoe.value  = Shoe(_shoe.value!!.name,shoeSize,
+            _shoe.value!!.company,_shoe.value!!.description)
     }
 
     fun setCompany(shoeCie: String) {
-
-        var shoeInter = _shoe.value
-        shoeInter?.company = shoeCie
-
-        _shoe.value  = shoeInter
+        _shoe.value  = Shoe(_shoe.value!!.name,_shoe.value!!.size,
+            shoeCie,_shoe.value!!.description)
     }
 
     fun setDescription(shoeDesc:String) {
-        var shoeInter = _shoe.value
-        shoeInter?.description = shoeDesc
-
-        _shoe.value  = shoeInter
+        _shoe.value  = Shoe(_shoe.value!!.name,_shoe.value!!.size,
+            _shoe.value!!.company,shoeDesc)
     }
+
     //
     // fun
 }
