@@ -62,7 +62,12 @@ class ListingFragment : Fragment() {
         // Add them to the text
         // What if the
         // thing already exist ?
+
+        if(listingFragmentArgs.position < 0)
         viewModel.addShoe(listingFragmentArgs.shoe)
+        else
+            Log.i("ListingActivity ","famous shoe"+listingFragmentArgs.shoe!!.name)
+            //viewModel.updateShoe(listingFragmentArgs.position,listingFragmentArgs.shoe)
         // I need to add the new thing in the
 
         // Create one big linear layout
