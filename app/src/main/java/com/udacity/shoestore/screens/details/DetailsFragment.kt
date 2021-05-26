@@ -30,7 +30,6 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         //
         val binding : DetailsFragmentBinding =  DataBindingUtil.inflate(
             inflater,
@@ -68,19 +67,25 @@ class DetailsFragment : Fragment() {
                     !(binding.editShoeSize.text!!.isEmpty())
                ){
 
-                if(!binding.editCompanyName.text.toString().isEmpty()){
-                    viewModel.setCompany(binding.editCompanyName.text.toString())
-                }
+                //
 
-                if(!binding.editShoeDescription.text.toString().isEmpty()){
-                    viewModel.setCompany(binding.editShoeDescription.text.toString())
-                }
+                /* if(!binding.editCompanyName.text.toString().isEmpty()){
+
+                }*/
+                    // The string .toString()
+                    // Log.i("Details Fr","PRIX videu "+binding.editShoeSize.text)
+                viewModel.setName(""+binding.editShoeName.text)
+                viewModel.setDescription(""+binding.editShoeDescription.text)
+                viewModel.setSize(""+binding.editShoeSize.text)
+                viewModel.setCompany(""+binding.editCompanyName.text)
+
+                /*if(!binding.editShoeDescription.text.toString().isEmpty()){
+
+                }*/
 
                 // Get all the fields
                 // Create a new shoes and add it to the
                 // list
-                viewModel.setName(binding.editShoeName.text!!.toString())
-                viewModel.setSize(binding.editShoeSize.text!!.toString().toDouble())
 
                 // 1) Create the layout
 
