@@ -8,7 +8,8 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     private var isLoggedIn = false
-    /*open fun addView(
+    /*
+    open fun addView(
     child: View!,
     width: Int,
     height: Int
@@ -41,9 +42,6 @@ class MainActivity : AppCompatActivity() {
     // Each step should pop off the previous page and we'll end up
     // ...
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-    }
 
     // if we are inside of the "insertFragement"
     // set it to true
@@ -52,4 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     // check the current page
     //
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+    }
 }

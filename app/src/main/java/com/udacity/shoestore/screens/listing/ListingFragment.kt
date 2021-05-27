@@ -22,10 +22,12 @@ import com.udacity.shoestore.models.Shoe
 class ListingFragment : Fragment() {
 
     private lateinit var viewModel: ListingViewModel
-    private lateinit var mainTextView: TextView
-    private lateinit var itemMainLayout: LinearLayout
     private lateinit var posTextview: TextView
+    private lateinit var mainTextView: TextView
+    private lateinit var sizeTextView: TextView
+    private lateinit var itemMainLayout: LinearLayout
 
+    var countage = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,9 +55,14 @@ class ListingFragment : Fragment() {
         // If a new shoes was created inside of the
         // Log.i("Listing Fr","shooz eye "+listingFragmentArgs.shoe?.size)
 
-        if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null){
-            Log.i("Listing Fr","shooz eye "+listingFragmentArgs.shoe?.name)
+        if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null){/*
+            Log.i("Listing Fr","shooz name "+listingFragmentArgs.shoe?.name)
+            Log.i("Listing Fr","shooz cie "+listingFragmentArgs.shoe?.company)
+            Log.i("Listing Fr","shooz descript "+listingFragmentArgs.shoe?.description)
+            Log.i("Listing Fr","shooz size "+listingFragmentArgs.shoe?.size)*/
             viewModel.addShoe(listingFragmentArgs.shoe)
+
+            Log.i("Listing Fr","shooz qty "+viewModel.shoeList.value?.size)
         }
         else if(listingFragmentArgs.position >= 0 ) {
             viewModel.updateShoe(listingFragmentArgs.position, listingFragmentArgs.shoe)
@@ -65,6 +72,7 @@ class ListingFragment : Fragment() {
         // and get it
         mainTextView = initTextview(this.context);
         posTextview = initTextview(this.context);
+        sizeTextView = initTextview(this.context);
 
         // The shoeList observe the
         // activity and updates itself accordingly ?
@@ -100,10 +108,12 @@ class ListingFragment : Fragment() {
 
                     mainTextView = initTextview(this.context)
                     posTextview = initTextview(this.context)
+                    sizeTextView = initTextview(this.context);
 
                     // The thing can be empty indeed
                     mainTextView.setText(shoe!!.name)
                     posTextview.setText(i.toString())
+                    sizeTextView.setText("| "+shoe!!.size.toString())
 
                     // Make the position textview invisible
                     // and set its id.
@@ -111,6 +121,7 @@ class ListingFragment : Fragment() {
                     posTextview.id = R.id.position_text
 
                     itemMainLayout.addView(mainTextView)
+                    itemMainLayout.addView(sizeTextView)
                     itemMainLayout.addView(posTextview)
 
                     // Add a click listener here
@@ -136,6 +147,8 @@ class ListingFragment : Fragment() {
 
         // We can create a new Shoe with no value.
         // But how ?
+        countage += 2
+
         binding.addNewButton.setOnClickListener {
             // Send a shoe with no data !
             findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
@@ -146,8 +159,8 @@ class ListingFragment : Fragment() {
 
     fun fillTheScreen (listOfShoe:MutableList<Shoe>) {
 
-        // We need to add the thing
         //
+        // We need to add the think
     }
 
     fun initLinearLayout(context: Context?): LinearLayout{
@@ -197,4 +210,14 @@ class ListingFragment : Fragment() {
         return true
     }
 
+    /*
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("count",countage)
+    }*/
+
+    override fun onDestroyView() {
+        Log.i("List Fr","OnDestroyV")
+        super.onDestroyView()
+    }
 }

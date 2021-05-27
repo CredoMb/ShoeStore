@@ -30,19 +30,23 @@ class DetailsViewModel(aShoe: Shoe?,pos: Int): ViewModel() {
     //
     fun setName(shoeName:String){
 
+        //Log.i("Details Fr","lénom "+shoeName)
         _shoe.value  = Shoe(shoeName,_shoe.value!!.size,
             _shoe.value!!.company,_shoe.value!!.description)
     }
 
     // var name: String, var size: Double, var company: String, var description: String,
     // val images: List<String> = mutableListOf()
-    fun setSize(shoeSize:Double){
+    fun setSize(shoeSize:String){
         //
-        _shoe.value  = Shoe(_shoe.value!!.name,shoeSize,
+        _shoe.value  = Shoe(_shoe.value!!.name,shoeSize.toDouble(),
             _shoe.value!!.company,_shoe.value!!.description)
     }
 
     fun setCompany(shoeCie: String) {
+        //
+        Log.i("Details VM","Cie eza "+shoeCie)
+
         _shoe.value  = Shoe(_shoe.value!!.name,_shoe.value!!.size,
             shoeCie,_shoe.value!!.description)
     }

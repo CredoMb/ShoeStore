@@ -1,5 +1,6 @@
 package com.udacity.shoestore.screens.listing
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,10 +11,11 @@ class ListingViewModel : ViewModel() {
     private val _shoeList = MutableLiveData<MutableList<Shoe?>>()
     val shoeList: LiveData<MutableList<Shoe?>>
         get() = _shoeList
-
+    //
     init {
         // We'll create an empty list
         _shoeList.value = mutableListOf<Shoe?>()
+
     }
 
     // var sampleList = listOf<String>("gana","kobra","milan")

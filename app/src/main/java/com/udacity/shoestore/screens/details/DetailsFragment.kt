@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -70,22 +72,19 @@ class DetailsFragment : Fragment() {
                 //
 
                 /* if(!binding.editCompanyName.text.toString().isEmpty()){
-
                 }*/
+
+                    var description:String = binding.editShoeDescription.text.toString()
+                    var company:String = binding.editCompanyName.text.toString()
+                    var sizeText:String = binding.editShoeSize.text.toString()
+
                     // The string .toString()
                     // Log.i("Details Fr","PRIX videu "+binding.editShoeSize.text)
                 viewModel.setName(""+binding.editShoeName.text)
-                viewModel.setDescription(""+binding.editShoeDescription.text)
-                viewModel.setSize(""+binding.editShoeSize.text)
-                viewModel.setCompany(""+binding.editCompanyName.text)
+                viewModel.setDescription(description)
+                viewModel.setSize(sizeText)
+                viewModel.setCompany(company)
 
-                /*if(!binding.editShoeDescription.text.toString().isEmpty()){
-
-                }*/
-
-                // Get all the fields
-                // Create a new shoes and add it to the
-                // list
 
                 // 1) Create the layout
 
@@ -99,12 +98,9 @@ class DetailsFragment : Fragment() {
                 )
 
                 // 2) Add it to the listing fragment
-                // Size x
-                // By add
             } else {
-
+                Toast.makeText(context,"The Name and Price can not be empty",LENGTH_LONG)
             }
-
         }
         // Receive the thing and put it inside
         // of the
