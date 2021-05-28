@@ -72,7 +72,9 @@ class DetailsFragment : Fragment() {
                 //
 
                 /* if(!binding.editCompanyName.text.toString().isEmpty()){
-                }*/
+                }
+
+                */
 
                     var description:String = binding.editShoeDescription.text.toString()
                     var company:String = binding.editCompanyName.text.toString()
