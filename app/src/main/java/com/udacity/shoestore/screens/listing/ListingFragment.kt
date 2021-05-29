@@ -123,18 +123,30 @@ class ListingFragment : Fragment() {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT)
 
-        linearLayout.orientation = LinearLayout.VERTICAL
-        // android.R.attr.textViewStyle
+        linearLayout.orientation = LinearLayout.HORIZONTAL
 
         return linearLayout
     }
 
     fun initTextview(context: Context?): TextView{
 
-        var textView = TextView(context);
+        //
+        // R.style.shoeNameText
+        //constructor(context: Context,
+        //                attrs: AttributeSet? = null,
+        //                defStyleAttr: Int = android.R.attr.radioButtonStyle,
+        //                defStyleRes: Int = R.style.guide_RadioButton)
+
+        var textView = TextView(context)
+        /*var textView = TextView(context,
+        null,android.R.attr.textViewStyle,
+        R.style.shoeNameText)*/
+
+
         textView.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT)
+
         return textView
     }
     // Create a LinearLayout with one textView
