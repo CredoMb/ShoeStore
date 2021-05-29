@@ -27,8 +27,6 @@ import com.udacity.shoestore.screens.ListAndDetailViewModel
  */
 class DetailsFragment : Fragment() {
 
-    private lateinit var viewModel: DetailsViewModel
-    private lateinit var viewModelFactory: DetailsViewModelFactory
 
     private val sharedViewM : ListAndDetailViewModel by activityViewModels()
 
@@ -47,28 +45,19 @@ class DetailsFragment : Fragment() {
 
         val detailsFragmentArgs by navArgs<DetailsFragmentArgs>()
 
-        // What to do now ?
-        // We detailsFragmentArgs
-        // require "integer"
-        // found "int"
+        // Display all the shoe data inside of the
+        // Detail Fragment
+        if(detailsFragmentArgs.position >=0) {
 
-        /*viewModelFactory = DetailsViewModelFactory(detailsFragmentArgs.shoe,detailsFragmentArgs.position)
-        viewModel = ViewModelProvider(this, viewModelFactory)
-                .get(DetailsViewModel::class.java)*/
+            val currentShoe = sharedViewM.shoeList.value?.get(detailsFragmentArgs.position)
+            binding.editShoeName.setText(currentShoe?.name)
+            binding.editShoeSize.setText(currentShoe?.size.toString())
+            binding.editCompanyName.setText(currentShoe?.company)
+            binding.editShoeDescription.setText(currentShoe?.description)
 
-        //Log.i("DetailActivity","é pozition yango "+detailsFragmentArgs.position.toString())
+        }
 
-        /*viewModel.shoe.observe(viewLifecycleOwner, Observer { shoeUpdate ->
-            if(shoeUpdate != null){
-                binding.editShoeName.setText(shoeUpdate.name)
-                binding.editShoeSize.setText(shoeUpdate.size.toString())
-                binding.editCompanyName.setText(shoeUpdate.company)
-                binding.editShoeDescription.setText(shoeUpdate.description)
-            }
-        })*/
-
-        // If the shoe is empty name, cie, size and description
-        // Take the shoe
+        // Attach a listener to the save button
         binding.saveButton.setOnClickListener {
 
             if (!(binding.editShoeName.text!!.isEmpty()) &&
@@ -80,26 +69,15 @@ class DetailsFragment : Fragment() {
                     var company:String = binding.editCompanyName.text.toString()
                     var size = binding.editShoeSize.text.toString().toDouble()
 
-                    // The string .toString()
-                    // Log.i("Details Fr","PRIX videu "+binding.editShoeSize.text)
-
-                /*viewModel.setName(""+binding.editShoeName.text)
-                viewModel.setDescription(description)
-                viewModel.setSize(sizeText)
-                viewModel.setCompany(company)*/
 
                 if(detailsFragmentArgs.position >=0) {
                     sharedViewM.updateShoe(detailsFragmentArgs.position,Shoe(name,size,company,description))
                 }else{
                     sharedViewM.addShoe(Shoe(name,size,company,description))
                 }
-                // 1) Create the layout
 
-                // send it back with the position
-                // we got if it was a new thing, set the
-                // position to it default value
-                //.setPosition(viewModel.position.value!!)
-                //                    .setShoe(viewModel.shoe?.value)
+                // After updating the shoe
+                // navigate back to the Listing Fragment
                 findNavController().navigate(
                     DetailsFragmentDirections.actionDetailsDestinationToListingDestination()
                 )
@@ -108,8 +86,7 @@ class DetailsFragment : Fragment() {
                 Toast.makeText(context,"The Name and Price can not be empty",LENGTH_LONG)
             }
         }
-        // Receive the thing and put it inside
-        // of the
+
         return binding.root
     }
 
