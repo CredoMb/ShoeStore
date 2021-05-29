@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,7 @@ import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.DetailsFragmentBinding
 import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.screens.ListAndDetailViewModel
 
 
 /**
@@ -28,6 +30,7 @@ class DetailsFragment : Fragment() {
     private lateinit var viewModel: DetailsViewModel
     private lateinit var viewModelFactory: DetailsViewModelFactory
 
+    private val sharedViewM : ListAndDetailViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +42,7 @@ class DetailsFragment : Fragment() {
             container,
             false
         )
+
 
         val detailsFragmentArgs by navArgs<DetailsFragmentArgs>()
         // What to do now ?

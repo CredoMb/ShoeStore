@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,6 +19,7 @@ import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ListingFragmentBinding
 import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.screens.ListAndDetailViewModel
 
 class ListingFragment : Fragment() {
 
@@ -28,6 +30,7 @@ class ListingFragment : Fragment() {
     private lateinit var itemMainLayout: LinearLayout
 
     var countage = 0
+    private val sharedViewM : ListAndDetailViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,12 +63,12 @@ class ListingFragment : Fragment() {
             Log.i("Listing Fr","shooz cie "+listingFragmentArgs.shoe?.company)
             Log.i("Listing Fr","shooz descript "+listingFragmentArgs.shoe?.description)
             Log.i("Listing Fr","shooz size "+listingFragmentArgs.shoe?.size)*/
-            viewModel.addShoe(listingFragmentArgs.shoe)
+            sharedViewM.addShoe(listingFragmentArgs.shoe)
 
             Log.i("Listing Fr","shooz qty "+viewModel.shoeList.value?.size)
         }
         else if(listingFragmentArgs.position >= 0 ) {
-            viewModel.updateShoe(listingFragmentArgs.position, listingFragmentArgs.shoe)
+            sharedViewM.updateShoe(listingFragmentArgs.position, listingFragmentArgs.shoe)
         }
 
         // Create one big linear layout
@@ -76,7 +79,7 @@ class ListingFragment : Fragment() {
 
         // The shoeList observe the
         // activity and updates itself accordingly ?
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer { newList ->
+        sharedViewM.shoeList.observe(viewLifecycleOwner, Observer { newList ->
 
             var i = 0
             if(newList.size > 0) {

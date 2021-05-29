@@ -28,15 +28,11 @@ class InstructionFragment : Fragment() {
             false
         )
 
-        // What to do now
         binding.listingButton.setOnClickListener {
             findNavController().navigate(InstructionFragmentDirections.actionInstructionToListing())
         }
-        // override the up button
-        // no upbutton here ?
         return binding.root
 
     }
 
-    //
 }
