@@ -28,26 +28,25 @@ import com.udacity.shoestore.screens.ListAndDetailViewModel
 class DetailsFragment : Fragment() {
 
 
-    private val sharedViewM : ListAndDetailViewModel by activityViewModels()
+    private val sharedViewM: ListAndDetailViewModel by activityViewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        //
-        val binding : DetailsFragmentBinding =  DataBindingUtil.inflate(
-            inflater,
-            R.layout.details_fragment,
-            container,
-            false
-        )
 
+        val binding: DetailsFragmentBinding = DataBindingUtil.inflate(
+                inflater,
+                R.layout.details_fragment,
+                container,
+                false
+        )
 
         val detailsFragmentArgs by navArgs<DetailsFragmentArgs>()
 
         // Display all the shoe data inside of the
         // Detail Fragment
-        if(detailsFragmentArgs.position >=0) {
+        if (detailsFragmentArgs.position >= 0) {
 
             val currentShoe = sharedViewM.shoeList.value?.get(detailsFragmentArgs.position)
             binding.editShoeName.setText(currentShoe?.name)
@@ -62,28 +61,28 @@ class DetailsFragment : Fragment() {
 
             if (!(binding.editShoeName.text!!.isEmpty()) &&
                     !(binding.editShoeSize.text!!.isEmpty())
-               ){
+            ) {
 
-                    val name:String = binding.editShoeName.text.toString()
-                    var description:String = binding.editShoeDescription.text.toString()
-                    var company:String = binding.editCompanyName.text.toString()
-                    var size = binding.editShoeSize.text.toString().toDouble()
+                val name: String = binding.editShoeName.text.toString()
+                var description: String = binding.editShoeDescription.text.toString()
+                var company: String = binding.editCompanyName.text.toString()
+                var size = binding.editShoeSize.text.toString().toDouble()
 
 
-                if(detailsFragmentArgs.position >=0) {
-                    sharedViewM.updateShoe(detailsFragmentArgs.position,Shoe(name,size,company,description))
-                }else{
-                    sharedViewM.addShoe(Shoe(name,size,company,description))
+                if (detailsFragmentArgs.position >= 0) {
+                    sharedViewM.updateShoe(detailsFragmentArgs.position, Shoe(name, size, company, description))
+                } else {
+                    sharedViewM.addShoe(Shoe(name, size, company, description))
                 }
 
-                // After updating the shoe
+                // After updating or adding the shoe
                 // navigate back to the Listing Fragment
                 findNavController().navigate(
-                    DetailsFragmentDirections.actionDetailsDestinationToListingDestination()
+                        DetailsFragmentDirections.actionDetailsDestinationToListingDestination()
                 )
 
             } else {
-                Toast.makeText(context,"The Name and Price can not be empty",LENGTH_LONG)
+                Toast.makeText(context, "The Name and Price can not be empty", LENGTH_LONG)
             }
         }
 

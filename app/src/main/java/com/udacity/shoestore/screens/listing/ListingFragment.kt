@@ -23,13 +23,12 @@ import com.udacity.shoestore.screens.ListAndDetailViewModel
 
 class ListingFragment : Fragment() {
 
-    private lateinit var viewModel: ListingViewModel
     private lateinit var posTextview: TextView
     private lateinit var mainTextView: TextView
     private lateinit var sizeTextView: TextView
     private lateinit var itemMainLayout: LinearLayout
 
-    var countage = 0
+
     private val sharedViewM : ListAndDetailViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -45,34 +44,8 @@ class ListingFragment : Fragment() {
             false
         )
 
-        // I need to get the intent from "details"
-        // what if...
-        // val listingFragmentArgs by navArgs<ListingFragmentArgs>()
-
-        // initiate the view model,
-        // now.
-        viewModel = ViewModelProvider(this).get(ListingViewModel::class.java)
-
-        var sampleList = listOf<String>("gana","kobra","milan")
-
-        // If a new shoes was created inside of the
-        // Log.i("Listing Fr","shooz eye "+listingFragmentArgs.shoe?.size)
-
-        /*if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null){/*
-            Log.i("Listing Fr","shooz name "+listingFragmentArgs.shoe?.name)
-            Log.i("Listing Fr","shooz cie "+listingFragmentArgs.shoe?.company)
-            Log.i("Listing Fr","shooz descript "+listingFragmentArgs.shoe?.description)
-            Log.i("Listing Fr","shooz size "+listingFragmentArgs.shoe?.size)*/
-            sharedViewM.addShoe(listingFragmentArgs.shoe)
-
-            Log.i("Listing Fr","shooz qty "+viewModel.shoeList.value?.size)
-        }
-        else if(listingFragmentArgs.position >= 0 ) {
-            sharedViewM.updateShoe(listingFragmentArgs.position, listingFragmentArgs.shoe)
-        }*/
-
-        // Create one big linear layout
-        // and get it
+        // Create the textview for all the info
+        // to display on the screen
         mainTextView = initTextview(this.context);
         posTextview = initTextview(this.context);
         sizeTextView = initTextview(this.context);
@@ -80,16 +53,13 @@ class ListingFragment : Fragment() {
         // The shoeList observe the
         // activity and updates itself accordingly ?
         sharedViewM.shoeList.observe(viewLifecycleOwner, Observer { newList ->
-
             var i = 0
             if(newList.size > 0) {
-                for(shoe in newList) {
-                    // Create a new layout shoe in newList
-                    //i in 1..5 sampleList
-                    // Log.i("ListingFr","Ba shooze "+shoe?.name)
-                    //Log.i("ListingFr","shooze quantity "+newList.size.toString())
+                    // Make the place holder
+                    // Invisible
 
-                    //.setText("zie")
+
+                for(shoe in newList) {
 
                     itemMainLayout = initLinearLayout(this.context)
                     // Set a click listener that
@@ -104,8 +74,6 @@ class ListingFragment : Fragment() {
                                 ListingFragmentDirections.actionListingToDetails()
                                 .setPosition(pos.toInt())
                         )
-
-                        //findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
                     }
 
                     mainTextView = initTextview(this.context)
@@ -130,39 +98,22 @@ class ListingFragment : Fragment() {
 
                     binding.listingGroupview.addView(itemMainLayout)
 
-                    /*textView = TextView(this.context);
-
-
-                    //listing_groupview
-                    binding.listingGroupview*/
-
+                    // Increment the variable that will
+                    // help us to determine the position of
+                    // an element inside the list
                     i++
                 }
             }else {
-                Log.i("MainActivity","eza videu")
+                // Make the place holder visible
             }
-
-            //
         })
 
-        /** Continue here : Receive the new data from the details activity !! */
-
-        // We can create a new Shoe with no value.
-        // But how ?
-        countage += 2
-
         binding.addNewButton.setOnClickListener {
-            // Send a shoe with no data !
+            // Send a shoe with no position data !
             findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
         }
         return binding.root
 
-    }
-
-    fun fillTheScreen (listOfShoe:MutableList<Shoe>) {
-
-        //
-        // We need to add the think
     }
 
     fun initLinearLayout(context: Context?): LinearLayout{
@@ -210,16 +161,5 @@ class ListingFragment : Fragment() {
                 LinearLayout.LayoutParams.MATCH_PARENT)
 
         return true
-    }
-
-    /*
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt("count",countage)
-    }*/
-
-    override fun onDestroyView() {
-        Log.i("List Fr","OnDestroyV")
-        super.onDestroyView()
     }
 }
