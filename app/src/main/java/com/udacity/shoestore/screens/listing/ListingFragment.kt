@@ -47,7 +47,7 @@ class ListingFragment : Fragment() {
 
         // I need to get the intent from "details"
         // what if...
-        val listingFragmentArgs by navArgs<ListingFragmentArgs>()
+        // val listingFragmentArgs by navArgs<ListingFragmentArgs>()
 
         // initiate the view model,
         // now.
@@ -58,7 +58,7 @@ class ListingFragment : Fragment() {
         // If a new shoes was created inside of the
         // Log.i("Listing Fr","shooz eye "+listingFragmentArgs.shoe?.size)
 
-        if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null){/*
+        /*if(listingFragmentArgs.position < 0 && listingFragmentArgs.shoe!=null){/*
             Log.i("Listing Fr","shooz name "+listingFragmentArgs.shoe?.name)
             Log.i("Listing Fr","shooz cie "+listingFragmentArgs.shoe?.company)
             Log.i("Listing Fr","shooz descript "+listingFragmentArgs.shoe?.description)
@@ -69,7 +69,7 @@ class ListingFragment : Fragment() {
         }
         else if(listingFragmentArgs.position >= 0 ) {
             sharedViewM.updateShoe(listingFragmentArgs.position, listingFragmentArgs.shoe)
-        }
+        }*/
 
         // Create one big linear layout
         // and get it
@@ -87,7 +87,7 @@ class ListingFragment : Fragment() {
                     // Create a new layout shoe in newList
                     //i in 1..5 sampleList
                     // Log.i("ListingFr","Ba shooze "+shoe?.name)
-                    Log.i("ListingFr","shooze quantity "+newList.size.toString())
+                    //Log.i("ListingFr","shooze quantity "+newList.size.toString())
 
                     //.setText("zie")
 
@@ -103,7 +103,6 @@ class ListingFragment : Fragment() {
                         findNavController().navigate(
                                 ListingFragmentDirections.actionListingToDetails()
                                 .setPosition(pos.toInt())
-                                    .setShoe(newList.get(pos.toInt()))
                         )
 
                         //findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
