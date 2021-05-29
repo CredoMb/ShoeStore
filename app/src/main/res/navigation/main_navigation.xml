@@ -47,15 +47,7 @@
         <action
             android:id="@+id/action_listing_destination_to_instruction_destination2"
             app:destination="@id/instruction_destination" />
-        <argument
-            android:name="shoe"
-            app:argType=".models.Shoe"
-            android:defaultValue="@null"
-            app:nullable="true"/>
-        <argument
-            android:name="position"
-            app:argType="integer"
-            android:defaultValue="-1" />
+
     </fragment>
     <fragment
         android:id="@+id/details_destination"
@@ -74,11 +66,6 @@
             android:defaultValue="-1"
             app:argType="integer" />
 
-        <argument
-            android:name="shoe"
-            app:argType=".models.Shoe"
-            android:defaultValue="@null"
-            app:nullable="true"/>
     </fragment>
 
 </navigation>
