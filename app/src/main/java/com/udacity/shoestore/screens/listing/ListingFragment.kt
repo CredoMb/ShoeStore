@@ -124,6 +124,7 @@ class ListingFragment : Fragment() {
                 LinearLayout.LayoutParams.WRAP_CONTENT)
 
         linearLayout.orientation = LinearLayout.VERTICAL
+        // android.R.attr.textViewStyle
 
         return linearLayout
     }
@@ -139,25 +140,29 @@ class ListingFragment : Fragment() {
     // Create a LinearLayout with one textView
 
     fun generateALayout(context: Context): Boolean {
-        // Create th emain linear layout
+        // Create the main linear layout
         var mainLayout =  LinearLayout(context)
 
         // var mainLayoutParams: ViewGroup.LayoutParams
         // var mainLayoutParamss = ViewGroup.LayoutParams()
         // Inflate the linear layout
-
         mainLayout.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT)
 
+
+
+        // ViewGroup.MarginLayoutParams
         mainLayout.setPadding(8)
-        //
 
         mainTextView = TextView(context);
         mainTextView.text = "Zimbabwe"
-
+        //mainTextView
+        //
+        // width = wrap content
+        //
         mainTextView.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.MATCH_PARENT)
 
         return true
