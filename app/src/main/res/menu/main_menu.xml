@@ -4,7 +4,7 @@
     <!--android:icon="?android:attr/actionModeShareDrawable" -->
     <item
         android:id="@+id/logoutMenuButton"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:enabled="true"
         android:title="@string/logout_menu_text"
         android:visible="true" />

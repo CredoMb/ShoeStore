@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.app.ShareCompat
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.screens.listing.ListingFragmentDirections
@@ -22,14 +23,19 @@ class MainActivity : AppCompatActivity() {
     width: Int,
     height: Int
 ): Unit*/
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Timber.plant(Timber.DebugTree())
 
         // Assume that the user is not
-        // loggedIn already
+        // loggedIn already. The youth is in the
         isLoggedIn = false
+
+        // Store the nav contro
+        navController = findNavController(R.id.nav_host_fragment)
 
         //
         if(savedInstanceState != null) {
@@ -48,5 +54,20 @@ class MainActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logoutMenuButton -> navController.navigateUp()
+
+            // navigate(ListingFragmentDirections.actionListingToDetails())
+            // findNavController(R.id.main_navigation)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }
