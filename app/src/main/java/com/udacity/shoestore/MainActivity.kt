@@ -1,17 +1,12 @@
 package com.udacity.shoestore
 
-import android.content.ActivityNotFoundException
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.core.app.ShareCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.udacity.shoestore.screens.listing.ListingFragmentDirections
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -62,12 +57,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.logoutMenuButton -> navController.navigateUp()
+            R.id.logoutMenuButton -> {
 
-            // navigate(ListingFragmentDirections.actionListingToDetails())
-            // findNavController(R.id.main_navigation)
+                // Remove all the fragment
+                // from the backstack
+                while (navController.popBackStack()){}
+
+                //Go to the login page
+                navController.navigate(R.id.login_destination)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
-
 }

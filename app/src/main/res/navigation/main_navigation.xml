@@ -13,7 +13,6 @@
         <action
             android:id="@+id/action_login_to_welcome"
             app:destination="@id/welcome_destination"
-            app:popUpTo="@id/login_destination"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -61,6 +60,12 @@
 
         </action>
 
+        <action
+            android:id="@+id/action_details_destination_to_login_destination"
+            app:destination="@id/login_destination"
+            app:popUpToInclusive="true">
+
+        </action>
         <argument
             android:name="position"
             android:defaultValue="-1"
