@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-        <androidx.core.widget.NestedScrollView
+    <!--  android:layout_centerInParent="true" -->
 
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="screens.listing.ListingFragment">
@@ -63,8 +64,6 @@
     -->
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-
 
 </layout>
 

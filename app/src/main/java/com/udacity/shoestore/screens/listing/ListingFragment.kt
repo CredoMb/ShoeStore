@@ -112,10 +112,7 @@ class ListingFragment : Fragment() {
                 // Make the place holder visible
             }
         })
-        /*
-        binding.addNewButton.setOnClickListener {
-            // Send a shoe with no position data !
-        } */
+
         return binding.root
 
     }
@@ -184,11 +181,13 @@ class ListingFragment : Fragment() {
         return true
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        menu.findItem(R.id.addShoeMenuButton).setVisible(true)
-        super.onPrepareOptionsMenu(menu)
-    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
 
+        inflater.inflate(R.menu.listing_menu,menu)
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

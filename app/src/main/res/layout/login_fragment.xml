@@ -11,7 +11,8 @@
         android:paddingLeft="@dimen/fields_container_padding"
         android:paddingRight="@dimen/fields_container_padding"
         android:paddingBottom="@dimen/form_top_margin"
-        tools:context=".DetailsFragment">
+        tools:context=".DetailsFragment"
+        style="@style/AppTheme.NoActionBar">
 
     <!-- Username category -->
     <com.google.android.material.textfield.TextInputLayout

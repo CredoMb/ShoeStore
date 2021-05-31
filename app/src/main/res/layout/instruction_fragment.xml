@@ -8,7 +8,8 @@
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screens.instruction.InstructionFragment">
+        tools:context=".screens.instruction.InstructionFragment"
+        style="@style/AppTheme.NoActionBar">
 
         <TextView
             android:id="@+id/next_category_title_text"
