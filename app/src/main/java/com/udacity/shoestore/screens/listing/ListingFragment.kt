@@ -192,6 +192,14 @@ class ListingFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.addShoeMenuButton -> findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
+            R.id.logoutMenuButton -> {
+                // Remove all the fragment
+                // from the backstack
+                while (findNavController().popBackStack()){}
+
+                //Go to the login page
+                findNavController().navigate(R.id.login_destination)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

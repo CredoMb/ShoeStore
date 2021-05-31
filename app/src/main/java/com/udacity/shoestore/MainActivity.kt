@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
     }
@@ -58,7 +57,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.logoutMenuButton -> {
-
                 // Remove all the fragment
                 // from the backstack
                 while (navController.popBackStack()){}
