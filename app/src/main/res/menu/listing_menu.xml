@@ -10,4 +10,10 @@
         android:title="@string/addShoe_menu_text"
         android:visible="true" />
 
+    <item
+        android:id="@+id/logoutMenuButton"
+        app:showAsAction="never"
+        android:enabled="true"
+        android:title="@string/logout_menu_text"
+        android:visible="true" />
 </menu>
