@@ -1,19 +1,21 @@
 package com.udacity.shoestore.screens.listing
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.app.ShareCompat
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.udacity.shoestore.R
@@ -36,6 +38,9 @@ class ListingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // To
+        setHasOptionsMenu(true)
 
         val binding : ListingFragmentBinding =  DataBindingUtil.inflate(
             inflater,
@@ -107,11 +112,10 @@ class ListingFragment : Fragment() {
                 // Make the place holder visible
             }
         })
-
+        /*
         binding.addNewButton.setOnClickListener {
             // Send a shoe with no position data !
-            findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
-        }
+        } */
         return binding.root
 
     }
@@ -179,4 +183,18 @@ class ListingFragment : Fragment() {
 
         return true
     }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.addShoeMenuButton).setVisible(true)
+        super.onPrepareOptionsMenu(menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.addShoeMenuButton -> findNavController().navigate(ListingFragmentDirections.actionListingToDetails())
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    //
 }

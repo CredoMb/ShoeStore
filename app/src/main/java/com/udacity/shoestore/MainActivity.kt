@@ -1,8 +1,13 @@
 package com.udacity.shoestore
 
+import android.content.ActivityNotFoundException
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.core.app.ShareCompat
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -54,4 +59,6 @@ class MainActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
     }
+
+
 }

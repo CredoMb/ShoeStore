@@ -8,6 +8,7 @@
     <string name="welcome_text">Welcome To</string>
     <string name="visit_button_text">Visit</string>
     <string name="logout_menu_text">Logout</string>
+    <string name="addShoe_menu_text">Add_Shoe</string>
     <string name="hint_shoe_name">Name</string>
     <string name="hint_company_name">Company</string>
     <string name="hint_shoe_description">Description</string>
