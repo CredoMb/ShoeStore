@@ -45,21 +45,17 @@ class LoginFragment: Fragment() {
                 .get(LoginViewModel::class.java)
 
         binding.loginButton.setOnClickListener {
-
-            //goToWelcomeOrDisplayToast()
+            if(viewModel.dataIsEntered.value!!){
+                findNavController().navigate(LoginFragmentDirections.actionLoginToWelcome())
+            }
+            else {
+                Toast.makeText(this.context, "Enter a username and password", Toast.LENGTH_LONG).show()
+            }
         }
 
         return binding.root
     }
 
-    fun goToWelcomeOrDisplayToast(b: Boolean){
-        if(b){
-            findNavController().navigate(LoginFragmentDirections.actionLoginToWelcome())
-        }
-        else {
-            Toast.makeText(this.context, "Enter a username and password", Toast.LENGTH_LONG).show()
-        }
-    }
 
     //Remove the menu from the
     //login fragment
