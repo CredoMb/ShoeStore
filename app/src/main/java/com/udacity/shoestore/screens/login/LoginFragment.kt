@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.LoginFragmentBinding
@@ -37,12 +38,16 @@ class LoginFragment: Fragment() {
         )
 
 
-        binding.loginButton.setOnClickListener {
-            goToWelcomeOrDisplayToast(!(binding.editPassword.text!!.isEmpty()) &&
-                    !(binding.editUsername.text!!.isEmpty())
-            )
-        }
+        viewModelFactory = LoginViewModelFactory(!(binding.editPassword.text!!.isEmpty()) &&
+                !(binding.editUsername.text!!.isEmpty()))
 
+        viewModel = ViewModelProvider(this, viewModelFactory)
+                .get(LoginViewModel::class.java)
+
+        binding.loginButton.setOnClickListener {
+
+            //goToWelcomeOrDisplayToast()
+        }
 
         return binding.root
     }
