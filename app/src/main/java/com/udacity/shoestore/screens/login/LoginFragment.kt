@@ -43,11 +43,6 @@ class LoginFragment: Fragment() {
             )
         }
 
-        binding.signupButton.setOnClickListener {
-            goToWelcomeOrDisplayToast(!(binding.editPassword.text!!.isEmpty()) &&
-                    !(binding.editUsername.text!!.isEmpty())
-            )
-        }
 
         return binding.root
     }
@@ -62,7 +57,7 @@ class LoginFragment: Fragment() {
     }
 
     //Remove the menu from the
-    //fragment
+    //login fragment
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()

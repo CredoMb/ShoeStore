@@ -32,7 +32,6 @@ class InstructionFragment : Fragment() {
             findNavController().navigate(InstructionFragmentDirections.actionInstructionToListing())
         }
         return binding.root
-
     }
 
 }

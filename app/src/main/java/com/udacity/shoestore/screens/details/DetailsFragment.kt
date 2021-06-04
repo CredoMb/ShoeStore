@@ -19,7 +19,6 @@ import com.udacity.shoestore.databinding.DetailsFragmentBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.screens.ListAndDetailViewModel
 
-
 /**
  * A simple [Fragment] subclass.
  * Use the [DetailsFragment.newInstance] factory method to
@@ -27,9 +26,7 @@ import com.udacity.shoestore.screens.ListAndDetailViewModel
  */
 class DetailsFragment : Fragment() {
 
-
     private val sharedViewM: ListAndDetailViewModel by activityViewModels()
-
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?

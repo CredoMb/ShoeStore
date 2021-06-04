@@ -150,7 +150,6 @@ class ListingFragment : Fragment() {
 
         return textView
     }
-    // Create a LinearLayout with one textView
 
     fun generateALayout(context: Context): Boolean {
         // Create the main linear layout
@@ -203,5 +202,4 @@ class ListingFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-    //
 }
