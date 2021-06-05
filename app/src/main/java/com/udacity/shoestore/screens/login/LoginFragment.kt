@@ -53,6 +53,7 @@ class LoginFragment: Fragment() {
             }
         }
 
+        // include a constraint layout inside a linear layout
         return binding.root
     }
 

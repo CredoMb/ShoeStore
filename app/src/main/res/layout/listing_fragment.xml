@@ -15,8 +15,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+                <!--
+                The empty state and the floating button
 
-                <!-- Group View that contains all the texts of the empty state-->
                 <LinearLayout
                     android:id="@+id/emptyState_groupview"
                     android:layout_width="wrap_content"
@@ -47,8 +48,6 @@
                         android:textAlignment="center"
                         android:textAppearance="?android:textAppearanceSmall" />
                 </LinearLayout>
-
-                <!--
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
