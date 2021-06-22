@@ -14,7 +14,7 @@
 
     <!-- The margin to be used between views of the form-->
     <dimen name="details_fragment_spacing">8dp</dimen>
-
+    
     <!-- Margin for the floating button -->
     <dimen name="fab_margin">16dp</dimen>
 

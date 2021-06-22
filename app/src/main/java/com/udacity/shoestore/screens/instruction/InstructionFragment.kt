@@ -13,8 +13,6 @@ import com.udacity.shoestore.screens.welcome.WelcomeFragmentDirections
 
 class InstructionFragment : Fragment() {
 
-    private var removeBoarding: Boolean = false
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

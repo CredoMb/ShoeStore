@@ -4,6 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="shoe"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
+
+    <!-- LinearLayout to dispose all the
+         views vertically, one after the other -->
 <LinearLayout android:id="@+id/details_container_inputFields"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,13 +22,6 @@
     android:paddingRight="@dimen/fields_container_padding"
     android:paddingBottom="@dimen/form_top_margin"
     tools:context="screens.details.DetailsFragment">
-
-    <!--
-    <data>
-        <variable
-            name="detailViewModel"
-            type="com.example.android" />
-    </data> -->
 
     <!-- Name category -->
     <com.google.android.material.textfield.TextInputLayout
@@ -32,7 +34,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_shoe_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{shoe.name}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +52,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_company_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{shoe.company}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,12 +66,12 @@
         android:layout_marginTop="@dimen/details_fragment_spacing"
         android:hint="@string/hint_shoe_size">
 
-        <!-- Size field-->
+        <!-- Size field android:inputType="numberDecimal"-->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_shoe_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:text="@{Double.toString(shoe.size)}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +88,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_shoe_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{shoe.description}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

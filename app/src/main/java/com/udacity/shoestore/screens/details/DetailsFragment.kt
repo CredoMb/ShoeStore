@@ -46,11 +46,7 @@ class DetailsFragment : Fragment() {
         if (detailsFragmentArgs.position >= 0) {
 
             val currentShoe = sharedViewM.shoeList.value?.get(detailsFragmentArgs.position)
-            binding.editShoeName.setText(currentShoe?.name)
-            binding.editShoeSize.setText(currentShoe?.size.toString())
-            binding.editCompanyName.setText(currentShoe?.company)
-            binding.editShoeDescription.setText(currentShoe?.description)
-
+            binding.shoe = currentShoe
         }
 
         // Attach a listener to the save button
@@ -60,6 +56,7 @@ class DetailsFragment : Fragment() {
                     !(binding.editShoeSize.text!!.isEmpty())
             ) {
 
+                // I feel like these variables should not be here
                 val name: String = binding.editShoeName.text.toString()
                 var description: String = binding.editShoeDescription.text.toString()
                 var company: String = binding.editCompanyName.text.toString()
@@ -82,7 +79,6 @@ class DetailsFragment : Fragment() {
                 Toast.makeText(context, "The Name and Price can not be empty", LENGTH_LONG)
             }
         }
-
         return binding.root
     }
 

@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ShareCompat
+import androidx.core.view.marginStart
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -39,7 +40,6 @@ class ListingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // To
         setHasOptionsMenu(true)
 
         val binding : ListingFragmentBinding =  DataBindingUtil.inflate(
@@ -49,21 +49,9 @@ class ListingFragment : Fragment() {
             false
         )
 
-        // Create the textview for all the info
-        // to display on the screen
-        mainTextView = initTextview(this.context);
-        posTextview = initTextview(this.context);
-        sizeTextView = initTextview(this.context);
-
-        // The shoeList observe the
-        // activity and updates itself accordingly ?
         sharedViewM.shoeList.observe(viewLifecycleOwner, Observer { newList ->
             var i = 0
             if(newList.size > 0) {
-                    // Make the place holder
-                    // Invisible
-
-
                 for(shoe in newList) {
 
                     itemMainLayout = initLinearLayout(this.context)
@@ -74,7 +62,7 @@ class ListingFragment : Fragment() {
                         // Get the position of the current element
                         val pos = (it.findViewById<TextView>(R.id.position_text).text).toString()
 
-                        // Send the position to the thing
+                        // Send the position to the next fragment
                         findNavController().navigate(
                                 ListingFragmentDirections.actionListingToDetails()
                                 .setPosition(pos.toInt())
@@ -85,21 +73,22 @@ class ListingFragment : Fragment() {
                     posTextview = initTextview(this.context)
                     sizeTextView = initTextview(this.context);
 
-                    // The thing can be empty indeed
                     mainTextView.setText(shoe!!.name)
+                    mainTextView.setTextColor(resources.getColor(R.color.black_text_color));
+
                     posTextview.setText(i.toString())
-                    sizeTextView.setText("| "+shoe!!.size.toString())
+                    sizeTextView.setText("| $"+shoe!!.size.toString())
 
                     // Make the position textview invisible
                     // and set its id.
                     posTextview.visibility = View.GONE
                     posTextview.id = R.id.position_text
 
+                    // Put the three textview into
+                    // the same groupview
                     itemMainLayout.addView(mainTextView)
                     itemMainLayout.addView(sizeTextView)
                     itemMainLayout.addView(posTextview)
-
-                    // Add a click listener here
 
                     binding.listingGroupview.addView(itemMainLayout)
 
@@ -131,18 +120,7 @@ class ListingFragment : Fragment() {
 
     fun initTextview(context: Context?): TextView{
 
-        //
-        // R.style.shoeNameText
-        //constructor(context: Context,
-        //                attrs: AttributeSet? = null,
-        //                defStyleAttr: Int = android.R.attr.radioButtonStyle,
-        //                defStyleRes: Int = R.style.guide_RadioButton)
-
         var textView = TextView(context)
-        /*var textView = TextView(context,
-        null,android.R.attr.textViewStyle,
-        R.style.shoeNameText)*/
-
 
         textView.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -151,34 +129,6 @@ class ListingFragment : Fragment() {
         return textView
     }
 
-    fun generateALayout(context: Context): Boolean {
-        // Create the main linear layout
-        var mainLayout =  LinearLayout(context)
-
-        // var mainLayoutParams: ViewGroup.LayoutParams
-        // var mainLayoutParamss = ViewGroup.LayoutParams()
-        // Inflate the linear layout
-        mainLayout.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT)
-
-
-
-        // ViewGroup.MarginLayoutParams
-        mainLayout.setPadding(8)
-
-        mainTextView = TextView(context);
-        mainTextView.text = "Zimbabwe"
-        //mainTextView
-        //
-        // width = wrap content
-        //
-        mainTextView.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.MATCH_PARENT)
-
-        return true
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()

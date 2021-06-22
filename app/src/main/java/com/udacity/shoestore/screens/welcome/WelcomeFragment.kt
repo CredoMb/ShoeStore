@@ -26,7 +26,6 @@ class WelcomeFragment:  Fragment() {
             false
         )
 
-        // What to do now
         binding.visitStoreButton.setOnClickListener {
             findNavController().navigate(WelcomeFragmentDirections.actionWelcomeToInstruction())
         }

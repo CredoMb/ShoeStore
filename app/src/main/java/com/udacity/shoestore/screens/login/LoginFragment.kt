@@ -12,12 +12,6 @@ import com.udacity.shoestore.databinding.LoginFragmentBinding
 
 class LoginFragment: Fragment() {
 
-    private var isDataTyped = false
-
-    private lateinit var viewModel: LoginViewModel
-    private lateinit var viewModelFactory: LoginViewModelFactory
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true);
@@ -29,7 +23,6 @@ class LoginFragment: Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
-
         val binding : LoginFragmentBinding =  DataBindingUtil.inflate(
                 inflater,
                 R.layout.login_fragment,
@@ -38,14 +31,11 @@ class LoginFragment: Fragment() {
         )
 
 
-        viewModelFactory = LoginViewModelFactory(!(binding.editPassword.text!!.isEmpty()) &&
-                !(binding.editUsername.text!!.isEmpty()))
-
-        viewModel = ViewModelProvider(this, viewModelFactory)
-                .get(LoginViewModel::class.java)
-
         binding.loginButton.setOnClickListener {
-            if(viewModel.dataIsEntered.value!!){
+
+            // Here, we should check to see if the data was
+            // entered
+            if(!(binding.editUsername.text!!.isEmpty())&&!(binding.editPassword.text!!.isEmpty()) ){
                 findNavController().navigate(LoginFragmentDirections.actionLoginToWelcome())
             }
             else {
@@ -53,13 +43,10 @@ class LoginFragment: Fragment() {
             }
         }
 
-        // include a constraint layout inside a linear layout
         return binding.root
     }
 
-
-    //Remove the menu from the
-    //login fragment
+    //Remove the menu
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()

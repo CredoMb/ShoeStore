@@ -60,7 +60,6 @@
                 android:text="@string/login_button_text" />
 
         </LinearLayout>
-        <!-- How does the Relative Layout work ? -->
     </LinearLayout>
 
 </layout>
