@@ -11,10 +11,10 @@
         name="shoe"
         type="com.udacity.shoestore.models.Shoe" />
     </data>
+
 <!-- Constraint layout will help us
      display view in a more arbitrary
      way.-->
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/list_item_layout"
     android:layout_width="match_parent"
