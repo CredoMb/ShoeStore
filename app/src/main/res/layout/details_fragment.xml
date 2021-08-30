@@ -12,7 +12,7 @@
     </data>
 
     <!-- LinearLayout to dispose all the
-         views vertically, one after the other -->
+         views vertically, one after the other.  -->
 <LinearLayout android:id="@+id/details_container_inputFields"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -35,8 +35,12 @@
             android:id="@+id/edit_shoe_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{shoe.name}"/>
+            android:text="@={shoe.name}"/>
 
+        <!-- How can we make...
+             Always there to make noise, I can't escape from it-->
+
+        <!-- Find an app with an edit  -->
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Company category -->
