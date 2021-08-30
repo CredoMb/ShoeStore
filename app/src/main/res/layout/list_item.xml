@@ -1,78 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?><!-- One shoe -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- Constraint layout will help us
+     display view in a more arbitrary
+     way.-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_item_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="96dp"
     android:background="@drawable/select_list_background"
-    android:orientation="horizontal"
-    android:paddingStart="8dp"
-    android:paddingLeft="8dp"
-    android:paddingEnd="8dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="16dp">
+    android:paddingLeft="16dp">
 
     <ImageView
         android:id="@+id/catalog_product_iv"
         android:layout_width="@dimen/product_image_dimension"
         android:layout_height="@dimen/product_image_dimension"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/position_text_invisible"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/text_container"
+    <TextView
+        android:id="@+id/position_text_invisible"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/product_image_dimension"
-        android:paddingLeft="16dp">
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/position_text_invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:visibility="gone"/>
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginLeft="16dp"
+        android:gravity="bottom"
+        android:text="@{shoe.name}"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/catalog_product_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Shoes" />
 
-        <!-- android:textColor="@color/primaryText" -->
-        <TextView
-            android:id="@+id/name_text"
-            tools:text="Shoes"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:text="@{shoe.name}"
-            android:gravity="bottom"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/size_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@id/name_text"
+        android:layout_marginLeft="16dp"
+        android:gravity="top"
+        android:text="@{`` + shoe.size}"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/catalog_product_iv"
+        app:layout_constraintTop_toBottomOf="@+id/name_text"
+        tools:text="200$" />
 
-        <TextView
-            android:id="@+id/size_text"
-            tools:text="200$"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_below="@id/name_text"
-            android:text="@{`` + shoe.size}"
-            android:layout_marginRight="16dp"
-            android:gravity="top"
-            android:textSize="14sp" />
+    <TextView
+        android:id="@+id/company_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/name_text"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@id/size_text"
+        android:layout_toRightOf="@id/size_text"
+        android:gravity="top"
+        android:text="@{shoe.company}"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/size_text"
+        app:layout_constraintTop_toBottomOf="@+id/name_text"
+        tools:text="Addidas" />
 
-        <TextView
-            android:id="@+id/company_text"
-            tools:text="Addidas"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_below="@+id/name_text"
-            android:layout_toEndOf="@id/size_text"
-            android:layout_toRightOf="@id/size_text"
-            android:text="@{shoe.company}"
-            android:gravity="top"
-            android:textSize="14sp" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:text="View"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="View" />
-    </RelativeLayout>
-</LinearLayout>
