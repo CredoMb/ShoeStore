@@ -11,14 +11,14 @@ class ListAndDetailViewModel: ViewModel() {
     val shoeList: LiveData<MutableList<Shoe?>>
         get() = _shoeList
 
-    private val _currentShoe = MutableLiveData<Shoe>()
+    private val _shoe = MutableLiveData<Shoe>()
 
-    val currentShoe: LiveData<Shoe>
-        get() = _currentShoe
+    val shoe: LiveData<Shoe>
+        get() = _shoe
 
     init {
         _shoeList.value = mutableListOf<Shoe?>()
-        _currentShoe.value = Shoe("",0.0,"","")
+        _shoe.value = Shoe("",0.0,"","")
     }
     fun addShoe(aShoe: Shoe? ){
 
@@ -36,7 +36,7 @@ class ListAndDetailViewModel: ViewModel() {
         _shoeList.value = inter
     }
 
-    fun setCurrentShoe(currShoe:Shoe?){
-        _currentShoe.value = currShoe
+    fun setShoe(currShoe:Shoe?){
+        _shoe.value = currShoe
     }
 }

@@ -41,30 +41,37 @@ class DetailsFragment : Fragment() {
 
         val detailsFragmentArgs by navArgs<DetailsFragmentArgs>()
 
+        // Should we observe the shoe
+        // such that if there's sum
+        // that
+
         // Display all the shoe data inside of the
         // Detail Fragment
         if (detailsFragmentArgs.position >= 0) {
-
             val currentShoe = sharedViewM.shoeList.value?.get(detailsFragmentArgs.position)
             binding.shoe = currentShoe
-            sharedViewM.setCurrentShoe(currentShoe)
 
+            sharedViewM.setShoe(currentShoe)
+        }else {
+            binding.shoe = Shoe("",0.0,"","")
         }
+
+
+        // Set the view model variable
+        // to be the "sharedViewModel"
+        binding.viewModel = sharedViewM
+
 
         // Attach a listener to the save button
         binding.saveButton.setOnClickListener {
 
-            if (!(binding.shoe?.name!!.isEmpty()) &&
+            if (!(binding.editShoeName.text!!.isEmpty()) &&
                     !(binding.editShoeSize.text!!.isEmpty())
             ) {
 
-                // I feel like these variables should not be here
-                //val //name: String = binding.editShoeName.text.toString()
-
-                    // What to do now? IDK.
                     val name : String = binding.shoe!!.name
-                    var description: String = binding.editShoeDescription.text.toString()
-                var company: String = binding.editCompanyName.text.toString()
+                    var description: String = binding.shoe!!.description
+                var company: String = binding.shoe!!.company
                 var size = binding.editShoeSize.text.toString().toDouble()
 
 

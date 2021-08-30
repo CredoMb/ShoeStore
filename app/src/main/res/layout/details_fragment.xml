@@ -11,7 +11,7 @@
             type="com.udacity.shoestore.models.Shoe" />
 
         <variable
-            name="sharedViewModel"
+            name="viewModel"
             type="com.udacity.shoestore.screens.ListAndDetailViewModel" />
     </data>
 
@@ -39,7 +39,7 @@
             android:id="@+id/edit_shoe_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={sharedViewModel.currentShoe.name}"/>
+            android:text="@={shoe.name}"/>
 
         <!-- How can we make...
              Always there to make noise, I can't escape from it-->
@@ -61,7 +61,7 @@
             android:id="@+id/edit_company_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{shoe.company}"/>
+            android:text="@={shoe.company}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,9 +74,12 @@
         android:layout_marginTop="@dimen/details_fragment_spacing"
         android:hint="@string/hint_shoe_size">
 
-        <!-- Size field android:inputType="numberDecimal"-->
+        <!-- Size field android:inputType="numberDecimal"
+          Note : because of the conversion from Double to
+          String, we can't use two-way binding here-->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_shoe_size"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{Double.toString(shoe.size)}"/>
@@ -97,7 +100,7 @@
             android:id="@+id/edit_shoe_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{shoe.description}"/>
+            android:text="@={shoe.description}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
