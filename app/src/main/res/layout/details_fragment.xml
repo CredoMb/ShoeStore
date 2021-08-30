@@ -10,9 +10,6 @@
             name="shoe"
             type="com.udacity.shoestore.models.Shoe" />
 
-        <variable
-            name="viewModel"
-            type="com.udacity.shoestore.screens.ListAndDetailViewModel" />
     </data>
 
     <!-- LinearLayout to dispose all the

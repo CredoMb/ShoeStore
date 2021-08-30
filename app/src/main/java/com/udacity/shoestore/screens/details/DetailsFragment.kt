@@ -57,11 +57,6 @@ class DetailsFragment : Fragment() {
         }
 
 
-        // Set the view model variable
-        // to be the "sharedViewModel"
-        binding.viewModel = sharedViewM
-
-
         // Attach a listener to the save button
         binding.saveButton.setOnClickListener {
 
