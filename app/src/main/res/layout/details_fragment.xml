@@ -9,6 +9,10 @@
         <variable
             name="shoe"
             type="com.udacity.shoestore.models.Shoe" />
+
+        <variable
+            name="sharedViewModel"
+            type="com.udacity.shoestore.screens.ListAndDetailViewModel" />
     </data>
 
     <!-- LinearLayout to dispose all the
@@ -35,7 +39,7 @@
             android:id="@+id/edit_shoe_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={shoe.name}"/>
+            android:text="@={sharedViewModel.currentShoe.name}"/>
 
         <!-- How can we make...
              Always there to make noise, I can't escape from it-->

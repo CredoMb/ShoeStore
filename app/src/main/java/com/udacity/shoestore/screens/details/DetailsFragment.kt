@@ -49,11 +49,6 @@ class DetailsFragment : Fragment() {
             binding.shoe = currentShoe
             sharedViewM.setCurrentShoe(currentShoe)
 
-        }else{
-
-            // In the view model, we could have some value
-            // for the shoe and have the view model inside of
-            // This code is the code
         }
 
         // Attach a listener to the save button
