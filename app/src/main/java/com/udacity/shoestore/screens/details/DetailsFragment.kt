@@ -51,7 +51,6 @@ class DetailsFragment : Fragment() {
             val currentShoe = sharedViewM.shoeList.value?.get(detailsFragmentArgs.position)
             binding.shoe = currentShoe
 
-            sharedViewM.setShoe(currentShoe)
         }else {
             binding.shoe = Shoe("",0.0,"","")
         }
